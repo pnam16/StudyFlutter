@@ -17,6 +17,9 @@ class RandomListWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: AppBar(
         title: Text("List of Eng words"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.list), onPressed: _pressButton)
+        ],
       ),
       body: ListView.builder(itemBuilder: (context, index) {
         if (index >= _words.length) {
@@ -26,22 +29,50 @@ class RandomListWordsState extends State<RandomWords> {
       }),
     );
   }
+    _pressButton() {
+      final pageRoute = new MaterialPageRoute(builder: (context) {
+        //map convert lisst to another list
+        final listTiles = _checkedWords.map((_words) {
+          return ListTile(
+            title: Text(
+              _words.asPascalCase,
+              style: TextStyle(fontSize: 20.0),
+            ),
+          );
+        });
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Checked words'),
+          ),
+          body: ListView(
+            children: listTiles.toList(),
+          ),
+        );
+      });
+      Navigator.of(context).push(pageRoute);
+    }
 
   Widget _buildRow(WordPair word, int index) {
     final color = index % 2 == 0 ? Colors.red : Colors.blue;
     final isChecked = _checkedWords.contains(word);
     return ListTile(
       //leading = left ,trailing = right
-      trailing: Icon(isChecked ? Icons.favorite : Icons.favorite_border,color: Colors.red,),
-      leading: Icon(isChecked ? Icons.check_box : Icons.check_box_outline_blank,color: color,),
+      trailing: Icon(
+        isChecked ? Icons.favorite : Icons.favorite_border,
+        color: Colors.red,
+      ),
+      leading: Icon(
+        isChecked ? Icons.check_box : Icons.check_box_outline_blank,
+        color: color,
+      ),
       title: Text(
         word.asPascalCase,
         style: TextStyle(fontSize: 20.0, color: color),
       ),
-      onTap: (){
+      onTap: () {
         setState(() {
           //anonymous function
-          if(isChecked)
+          if (isChecked)
             _checkedWords.remove(word);
           else
             _checkedWords.add(word);
