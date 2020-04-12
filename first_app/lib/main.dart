@@ -96,6 +96,7 @@ import 'package:flutter/material.dart';
 //  }
 //}
 
+
 //===================================
 //2. Add image, Col, Row, Container, padding, add a long text...
 //void main() => runApp(MyApp());
@@ -241,6 +242,7 @@ import 'package:flutter/material.dart';
 //  }
 //}
 
+//==========================================================
 //3. Exemple about GridView
 //void main() => runApp(MyApp());
 //
@@ -293,38 +295,91 @@ import 'package:flutter/material.dart';
 //    );
 //  }
 //}
-
+//====================================================
 //4. Ex of SnackBar(//Toast)
+//void main() => runApp(MyApp());
+//
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+//    _showSnackBar() {
+//      final snackBar = SnackBar(
+//        content: Text("This is SnackBar"),
+//        duration: Duration(seconds: 3), //delay show SnackBar
+//        backgroundColor: Colors.grey[700],
+//        action: SnackBarAction(
+//          label: "Ok",
+//          onPressed: () {},
+//        ),
+//      );
+//      _scaffoldKey.currentState.showSnackBar(snackBar);
+//    }
+//
+//    return MaterialApp(
+//      title: "SnackBar",
+//      home: Scaffold(
+//        key: _scaffoldKey,
+//        appBar: AppBar(
+//          title: Text('An example of SnackBar'),
+//          actions: <Widget>[
+//            IconButton(icon: Icon(Icons.info), onPressed: _showSnackBar)
+//          ],
+//        ),
+//      ),
+//    );
+//  }
+//}
+//==============================================================
+//5. Tabs in Flutter (TabLayout)
+import 'tab1.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-    _showSnackBar() {
-      final snackBar = SnackBar(
-        content: Text("This is SnackBar"),
-        duration: Duration(seconds: 3), //delay show SnackBar
-        backgroundColor: Colors.grey[700],
-        action: SnackBarAction(
-          label: "Ok",
-          onPressed: () {},
-        ),
-      );
-      _scaffoldKey.currentState.showSnackBar(snackBar);
-    }
-
-    return MaterialApp(
-      title: "SnackBar",
-      home: Scaffold(
-        key: _scaffoldKey,
-        appBar: AppBar(
-          title: Text('An example of SnackBar'),
-          actions: <Widget>[
-            IconButton(icon: Icon(Icons.info), onPressed: _showSnackBar)
-          ],
-        ),
-      ),
-    );
+    final tabController = DefaultTabController(
+        length: 4,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text("These are tabs"),
+            bottom: TabBar(
+              //  indicatorColor: Colors.red,//tab onpessed
+              tabs: <Widget>[
+                Tab(
+                  icon: Icon(
+                    Icons.home,
+                    size: 32.0,
+                  ),
+                  text: 'Home',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.group,
+                    size: 32.0,
+                  ),
+                  text: 'Group',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.chat,
+                    size: 32.0,
+                  ),
+                  text: 'Chat',
+                ),
+                Tab(
+                  icon: Icon(
+                    Icons.cloud_upload,
+                    size: 32.0,
+                  ),
+                  text: 'Upload',
+                ),
+              ],
+            ),
+          ),
+          body: TabBarView(children: [Tab1(), Tab1(), Tab1(), Tab1()]),
+        ));
+    return MaterialApp(title: "Tabs Ex", home: tabController);
   }
 }
