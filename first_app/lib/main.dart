@@ -241,54 +241,90 @@ import 'package:flutter/material.dart';
 //  }
 //}
 
+//3. Exemple about GridView
+//void main() => runApp(MyApp());
+//
+//class MainPage extends StatefulWidget {
+//  String title;
+//
+//  MainPage(this.title) : super();
+//
+//  @override
+//  State<StatefulWidget> createState() {
+//    // TODO: implement createState
+//    return MainPageState(); //return a State
+//  }
+//}
+//
+//class MainPageState extends State<MainPage> {
+//  @override
+//  Widget build(BuildContext context) {
+//    // TODO: implement build
+//    return Scaffold(
+//      appBar: AppBar(
+//        title: Text(widget.title),
+//      ),
+//      body: GridView.extent(
+//        maxCrossAxisExtent: 222.0,
+//        mainAxisSpacing: 5.0,
+//        children: _buildGridImage(9),
+//      ),
+//    );
+//  }
+//}
+//
+//List<Widget> _buildGridImage(numberOfImage) {
+//  List<Container> container =
+//  new List<Container>.generate(numberOfImage, (int index) {
+//    final imageName = 'images/icon${index + 1}.png';
+//    return Container(
+//      child: Image.asset(imageName),
+//    );
+//  });
+//  return container;
+//}
+//
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    return MaterialApp(
+//      title: "",
+//      home: MainPage("GridViewTitle"),
+//    );
+//  }
+//}
+
+//4. Ex of SnackBar(//Toast)
 void main() => runApp(MyApp());
-
-class MainPage extends StatefulWidget {
-  String title;
-
-  MainPage(this.title) : super();
-
-  @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return MainPageState(); //return a State
-  }
-}
-
-class MainPageState extends State<MainPage> {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: GridView.extent(
-        maxCrossAxisExtent: 222.0,
-        mainAxisSpacing: 5.0,
-        children: _buildGridImage(9),
-      ),
-    );
-  }
-}
-
-List<Widget> _buildGridImage(numberOfImage) {
-  List<Container> container =
-      new List<Container>.generate(numberOfImage, (int index) {
-    final imageName = 'images/icon${index + 1}.png';
-    return Container(
-      child: Image.asset(imageName),
-    );
-  });
-  return container;
-}
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    _showSnackBar() {
+      final snackBar = SnackBar(
+        content: Text("This is SnackBar"),
+        duration: Duration(seconds: 3), //delay show SnackBar
+        backgroundColor: Colors.grey[700],
+        action: SnackBarAction(
+          label: "Ok",
+          onPressed: () {},
+        ),
+      );
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
+
     return MaterialApp(
-      title: "",
-      home: MainPage("GridViewTitle"),
+      title: "SnackBar",
+      home: Scaffold(
+        key: _scaffoldKey,
+        appBar: AppBar(
+          title: Text('An example of SnackBar'),
+          actions: <Widget>[
+            IconButton(icon: Icon(Icons.info), onPressed: _showSnackBar)
+          ],
+        ),
+      ),
     );
   }
 }
