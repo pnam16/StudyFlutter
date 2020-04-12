@@ -39,10 +39,48 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - images/image.png
+    - images/Hinh-Nen-Zoro-1 (1).jpg
+    - images/Hinh-Nen-Zoro-1 (2).jpg
+    - images/Hinh-Nen-Zoro-1 (3).jpg
+    - images/Hinh-Nen-Zoro-1 (4).jpg
+    - images/Hinh-Nen-Zoro-1 (5).jpg
+    - images/Hinh-Nen-Zoro-1 (6).jpg
+    - images/Hinh-Nen-Zoro-1 (7).jpg
+    - images/Hinh-Nen-Zoro-1 (8).jpg
+    - images/Hinh-Nen-Zoro-1 (9).jpg
+    - images/Hinh-Nen-Zoro-1 (10).jpg
+    - images/Hinh-Nen-Zoro-1 (11).jpg
+    - images/Hinh-Nen-Zoro-1 (12).jpg
+    - images/Hinh-Nen-Zoro-1 (13).jpg
+    - images/Hinh-Nen-Zoro-1 (14).jpg
+    - images/Hinh-Nen-Zoro-1 (15).jpg
+    - images/Hinh-Nen-Zoro-1 (16).jpg
+    - images/Hinh-Nen-Zoro-1 (17).jpg
+    - images/Hinh-Nen-Zoro-1 (18).jpg
+    - images/Hinh-Nen-Zoro-1 (19).jpg
+    - images/Hinh-Nen-Zoro-1 (20).jpg
+    - images/Hinh-Nen-Zoro-1 (21).jpg
+    - images/Hinh-Nen-Zoro-1 (22).jpg
+    - images/Hinh-Nen-Zoro-1 (23).jpg
+    - images/Hinh-Nen-Zoro-1 (24).jpg
+    - images/Hinh-Nen-Zoro-1 (25).jpg
+    - images/Hinh-Nen-Zoro-1 (26).jpg
+    - images/Hinh-Nen-Zoro-1 (27).jpg
+    - images/Hinh-Nen-Zoro-1 (28).jpg
+    - images/Hinh-Nen-Zoro-1 (29).jpg
+    - images/Hinh-Nen-Zoro-1 (30).jpg
+    - images/Hinh-Nen-Zoro-1 (31).jpg
+    - images/Hinh-Nen-Zoro-1 (32).jpg
+    - images/Hinh-Nen-Zoro-1 (33).jpg
+    - images/Hinh-Nen-Zoro-1 (34).jpg
+    - images/Hinh-Nen-Zoro-1 (35).jpg
+    - images/Hinh-Nen-Zoro-1 (36).jpg
+    - images/Hinh-Nen-Zoro-1 (37).jpg
+    - images/Hinh-Nen-Zoro-1 (38).jpg
+    - images/Hinh-Nen-Zoro-1 (39).jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
