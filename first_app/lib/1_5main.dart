@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+//import 'package:flutter/cupertino.dart';
+//import 'package:flutter/material.dart';
 
 // 1. RANDOM WORDS CHECK BOX CHANGE LAYOUT
 //void main() => runApp(MyApp());
@@ -332,54 +332,54 @@ import 'package:flutter/material.dart';
 //}
 //==============================================================
 //5. Tabs in Flutter (TabLayout)
-import 'tab1.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final tabController = DefaultTabController(
-        length: 4,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text("These are tabs"),
-            bottom: TabBar(
-              //  indicatorColor: Colors.red,//tab onpessed
-              tabs: <Widget>[
-                Tab(
-                  icon: Icon(
-                    Icons.home,
-                    size: 32.0,
-                  ),
-                  text: 'Home',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.group,
-                    size: 32.0,
-                  ),
-                  text: 'Group',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.chat,
-                    size: 32.0,
-                  ),
-                  text: 'Chat',
-                ),
-                Tab(
-                  icon: Icon(
-                    Icons.cloud_upload,
-                    size: 32.0,
-                  ),
-                  text: 'Upload',
-                ),
-              ],
-            ),
-          ),
-          body: TabBarView(children: [Tab1(), Tab1(), Tab1(), Tab1()]),
-        ));
-    return MaterialApp(title: "Tabs Ex", home: tabController);
-  }
-}
+//import 'tab1.dart';
+//
+//void main() => runApp(MyApp());
+//
+//class MyApp extends StatelessWidget {
+//  @override
+//  Widget build(BuildContext context) {
+//    final tabController = DefaultTabController(
+//        length: 4,
+//        child: Scaffold(
+//          appBar: AppBar(
+//            title: Text("These are tabs"),
+//            bottom: TabBar(
+//              //  indicatorColor: Colors.red,//tab onpessed
+//              tabs: <Widget>[
+//                Tab(
+//                  icon: Icon(
+//                    Icons.home,
+//                    size: 32.0,
+//                  ),
+//                  text: 'Home',
+//                ),
+//                Tab(
+//                  icon: Icon(
+//                    Icons.group,
+//                    size: 32.0,
+//                  ),
+//                  text: 'Group',
+//                ),
+//                Tab(
+//                  icon: Icon(
+//                    Icons.chat,
+//                    size: 32.0,
+//                  ),
+//                  text: 'Chat',
+//                ),
+//                Tab(
+//                  icon: Icon(
+//                    Icons.cloud_upload,
+//                    size: 32.0,
+//                  ),
+//                  text: 'Upload',
+//                ),
+//              ],
+//            ),
+//          ),
+//          body: TabBarView(children: [Tab1(), Tab1(), Tab1(), Tab1()]),
+//        ));
+//    return MaterialApp(title: "Tabs Ex", home: tabController);
+//  }
+//}
