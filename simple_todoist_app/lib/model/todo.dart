@@ -1,0 +1,21 @@
+class Todo {
+  int _id;
+  String _content;
+
+  Todo.fromData(id, content) {
+    _id = id;
+    content = _content;
+  }
+
+  String get content => _content;
+
+  set content(String value) {
+    _content = value;
+  }
+
+  int get id => _id;
+
+  set id(int value) {
+    _id = value;
+  }
+}
