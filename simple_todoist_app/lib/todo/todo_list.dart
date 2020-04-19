@@ -20,34 +20,37 @@ class TodoListState extends State<TodoList> {
             builder: (context, snapshot) {
               switch (snapshot.connectionState) {
                 case ConnectionState.active:
-                  return ListView.builder(
-
-                      itemCount: snapshot.data.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          title: Text(
-                            snapshot.data[index].content,
-                            style: TextStyle(fontSize: 22.0),
-                          ),
-                          trailing: GestureDetector(
-                            onTap: () {
-                              bloc.event.add(DeleteTodoEvent(snapshot.data[index]));
-                            },
-                            child: Icon(
-                              Icons.delete,
-                              color: Colors.red,
+                  return Expanded(
+                    child: ListView.builder(
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (context, index) {
+//                          final String a = (snapshot.data[index].content ==null)?"":snapshot.data[index].content;
+                          return ListTile(
+                            title: Text(
+//                              a,
+                              snapshot.data[index].content??"aa",
+                              style: TextStyle(fontSize: 22.0),
                             ),
-                          ),
-                        );
-                      });
+                            trailing: GestureDetector(
+                              onTap: () {
+                                bloc.event
+                                    .add(DeleteTodoEvent(snapshot.data[index]));
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        }),
+                  );
                 case ConnectionState.none:
                 default:
                   return Center(
                     child: Container(
-                      width: 69.0,
-                      height: 69.0,
-                      child: CircularProgressIndicator(),
-                    ),
+                        width: 69.0,
+                        height: 69.0,
+                        child: CircularProgressIndicator()),
                   );
               }
             }));

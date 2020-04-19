@@ -2,10 +2,7 @@ class Todo {
   int _id;
   String _content;
 
-  Todo.fromData(id, content) {
-    _id = id;
-    content = _content;
-  }
+  Todo(this._id, this._content);
 
   String get content => _content;
 

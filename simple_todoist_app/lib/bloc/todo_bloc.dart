@@ -29,7 +29,7 @@ class TodoBloc extends BaseBloc {
   @override
   void dispatchEvent(BaseEvent event) {
     if (event is AddTodoEvent) {
-      Todo todo = Todo.fromData(_randomInt.nextInt(100000), event.content);
+      Todo todo = Todo(_randomInt.nextInt(100000), event.content);
       _addTodo(todo);
     } else if (event is DeleteTodoEvent) {
       _deleteTodo(event.todo);

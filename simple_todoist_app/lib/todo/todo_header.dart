@@ -16,19 +16,18 @@ class TodoHeader extends StatelessWidget {
             decoration: InputDecoration(hintText: "Add todo"),
           ),
         ),
+        SizedBox(width: 20.0),
         RaisedButton.icon(
           onPressed: () {
             bloc.event.add(AddTodoEvent(txtTodoController.text));
+            print(txtTodoController.text);
           },
           label: Text(
             'Add',
             style: TextStyle(fontSize: 18.0, color: Colors.white),
           ),
-          icon: Icon(
-            Icons.note_add,
-            color: Colors.white,
-          ),
-        ),
+          icon: Icon(Icons.note_add, color: Colors.white),
+        )
       ],
     );
   }
