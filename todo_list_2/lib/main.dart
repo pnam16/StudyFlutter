@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list_2/screens/homepage.dart';
 
-import 'homepage.dart';
+void main() => runApp(MyApp());
 
-void main() => runApp(ToDoListApp());
-
-class ToDoListApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(primaryColor: Colors.blue),
-      home: Homepage(),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: HomePage(),
     );
   }
 }
