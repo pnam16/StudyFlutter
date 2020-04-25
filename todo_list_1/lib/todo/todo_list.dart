@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_todolist_app/bloc/todo_bloc.dart';
-import 'package:simple_todolist_app/event/delete_todo_event.dart';
-import 'package:simple_todolist_app/model/todo.dart';
+import 'package:todo_list_1/bloc/todo_bloc.dart';
+import 'package:todo_list_1/event/delete_todo_event.dart';
+import 'package:todo_list_1/model/todo.dart';
 
 class TodoList extends StatefulWidget {
   @override

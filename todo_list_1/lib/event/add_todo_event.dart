@@ -1,4 +1,4 @@
-import 'package:simple_todolist_app/base/base_event.dart';
+import 'package:todo_list_1/base/base_event.dart';
 
 class AddTodoEvent extends BaseEvent {
   String content;

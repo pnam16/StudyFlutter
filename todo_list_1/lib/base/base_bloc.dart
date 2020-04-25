@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:simple_todolist_app/base/base_event.dart';
+import 'package:todo_list_1/base/base_event.dart';
 
 abstract class BaseBloc {
   StreamController<BaseEvent> _eventStreamController = StreamController();

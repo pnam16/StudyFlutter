@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:simple_todolist_app/base/base_bloc.dart';
-import 'package:simple_todolist_app/base/base_event.dart';
-import 'package:simple_todolist_app/db/todo_table.dart';
-import 'package:simple_todolist_app/event/add_todo_event.dart';
-import 'package:simple_todolist_app/event/delete_todo_event.dart';
-import 'package:simple_todolist_app/model/todo.dart';
+import 'package:todo_list_1/base/base_bloc.dart';
+import 'package:todo_list_1/base/base_event.dart';
+import 'package:todo_list_1/db/todo_table.dart';
+import 'package:todo_list_1/event/add_todo_event.dart';
+import 'package:todo_list_1/event/delete_todo_event.dart';
+import 'package:todo_list_1/model/todo.dart';
 
 class TodoBloc extends BaseBloc {
   StreamController<List<Todo>> _todoListStreamController = StreamController();

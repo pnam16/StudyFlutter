@@ -1,6 +1,6 @@
 import 'package:path/path.dart';
-import 'package:simple_todolist_app/db/todo_table.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:todo_list_1/db/todo_table.dart';
 
 class TodoDatabase {
   static const DB_NAME = 'todo.db';
