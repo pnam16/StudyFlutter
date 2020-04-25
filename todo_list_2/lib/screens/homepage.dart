@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'add_task.dart';
+import 'package:todo_list_2/screens/modal_screen.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -21,7 +20,8 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            builder: (_) => AddTask(isEditMode: false),
+//            builder: (_) => TaskScreen(isEditMode: false),
+            builder: (_) => ModalScreen(),
           );
         },
         tooltip: 'Add a new item!',
