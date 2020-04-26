@@ -6,11 +6,9 @@ import 'package:todo_list_2/db/task_table.dart';
 import 'package:todo_list_2/event/add_task_event.dart';
 import 'package:todo_list_2/event/delete_task_event.dart';
 import 'package:todo_list_2/model/task.dart';
-import 'package:provider/provider.dart';
 
-class TaskBloc with ChangeNotifierProvider,BaseBloc  {
+class TaskBloc extends BaseBloc {
   StreamController<List<Task>> _taskListStreamController = StreamController();
-
   Stream<List<Task>> get taskListStream => _taskListStreamController.stream;
 
   TaskTable _taskTable = TaskTable();

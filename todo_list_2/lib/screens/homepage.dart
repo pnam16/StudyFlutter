@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_list_2/screens/modal_screen.dart';
+import 'package:todo_list_2/screens/task_list_item.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
         title: Text('Todo List'),
         actions: <Widget>[],
       ),
-      body: Text('a'),
+      body: TaskList(),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () {

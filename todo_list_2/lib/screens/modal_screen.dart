@@ -34,7 +34,7 @@ class ModalScreenState extends State<ModalScreen> {
         _selectedDate, _selectedTime, false);
     print(task.toMap());
 
-    bloc.event.add(AddTaskEvent(task));
+//    bloc.event.add(AddTaskEvent(task));
     Navigator.of(context).pop();
   }
 
