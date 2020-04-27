@@ -9,6 +9,7 @@ import 'package:todo_list_2/model/task.dart';
 
 class TaskBloc extends BaseBloc {
   StreamController<List<Task>> _taskListStreamController = StreamController();
+
   Stream<List<Task>> get taskListStream => _taskListStreamController.stream;
 
   TaskTable _taskTable = TaskTable();
@@ -23,7 +24,7 @@ class TaskBloc extends BaseBloc {
 
   _addTask(Task task) async {
     //insert to db
-    await _taskTable.insertTodo(task);
+    await _taskTable.insertTask(task);
 
     _list.add(task);
     _taskListStreamController.sink.add(_list);

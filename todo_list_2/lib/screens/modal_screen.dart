@@ -20,28 +20,23 @@ class ModalScreenState extends State<ModalScreen> {
   DateTime _selectedDate;
   String _inputDescription;
 
-  TaskBloc bloc = TaskBloc();
-
-  @override
-  void dispose() {
-    bloc.dispose();
-    super.dispose();
-  }
-
-  void _savePressed() {
+  void _savePressed(BuildContext context) {
     var _randomInt = Random();
-    Task task = Task(_randomInt.nextInt(10000000), _inputDescription,
-        _selectedDate, _selectedTime, false);
-    print(task.toMap());
-
-//    bloc.event.add(AddTaskEvent(task));
+    Task task = Task(
+        _randomInt.nextInt(10000000),
+        _inputDescription,
+        DateFormat.yMMMd().format(_selectedDate).toString(),
+        _selectedTime.format(context),
+        1);
+    Provider.of<TaskBloc>(context, listen: false).event.add(AddTaskEvent(task));
     Navigator.of(context).pop();
+
+    print(task.toMap()); /////////////
   }
 
   @override
   Widget build(BuildContext context) {
-    bloc = Provider.of<TaskBloc>(context);
-
+//    var bloc = Provider.of<TaskBloc>(context);
     return Container(
       padding: EdgeInsets.all(20),
       child: Column(
@@ -105,7 +100,7 @@ class ModalScreenState extends State<ModalScreen> {
             ),
           ),
           SizedBox(height: 22),
-          (Container(
+          Container(
             alignment: Alignment.bottomRight,
             child: Container(
               decoration: BoxDecoration(
@@ -120,11 +115,11 @@ class ModalScreenState extends State<ModalScreen> {
                       fontWeight: FontWeight.bold),
                 ),
                 onPressed: () {
-                  _savePressed();
+                  _savePressed(context);
                 },
               ),
             ),
-          )),
+          )
         ],
       ),
     );

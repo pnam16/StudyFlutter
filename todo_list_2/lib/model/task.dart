@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Task {
   int id;
   String description;
-  DateTime dueDate;
-  TimeOfDay dueTime;
-  bool isDone;
+  String dueDate;
+  String dueTime;
+  int isDone;
 
   Task(this.id, this.description, this.dueDate, this.dueTime, this.isDone);
 
@@ -15,7 +16,7 @@ class Task {
       'description': description,
       'date': dueDate,
       'time': dueTime,
-      'isDone': isDone
+      'isDone': isDone,
     };
   }
 //  Task getById(String id) {
