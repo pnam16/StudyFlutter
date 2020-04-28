@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_2/bloc/task_bloc.dart';
+import 'package:todo_list_2/event/delete_task_event.dart';
 import 'package:todo_list_2/model/task.dart';
 
 class TaskList extends StatefulWidget {
@@ -33,14 +34,13 @@ class TaskListState extends State<TaskList> {
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, index) {
                               return Dismissible(
-                                key: Key(index.toString()),
+                                key: Key(snapshot.data[index].id.toString()),
                                 background: Container(
                                     alignment: AlignmentDirectional.centerStart,
                                     child: Padding(
-                                      padding: EdgeInsets.only(left: 15.0),
-                                      child: Icon(Icons.done_outline,
-                                          size: 25.0, color: Colors.white),
-                                    ),
+                                        padding: EdgeInsets.only(left: 15.0),
+                                        child: Icon(Icons.done_outline,
+                                            size: 25.0, color: Colors.white)),
                                     color: Colors.green),
                                 secondaryBackground: Container(
                                     alignment: AlignmentDirectional.centerEnd,
@@ -49,6 +49,15 @@ class TaskListState extends State<TaskList> {
                                         child: Icon(Icons.delete,
                                             size: 28.0, color: Colors.white)),
                                     color: Colors.red),
+                                direction: DismissDirection.endToStart,
+                                onDismissed: (_) {
+                                  //swipe to delete task
+                                  Provider.of<TaskBloc>(context, listen: false)
+                                      .event
+                                      .add(DeleteTaskEvent(
+                                          snapshot.data[index]));
+                                  print("deleted");
+                                },
                                 child: Container(
                                   margin:
                                       EdgeInsets.only(right: 5.0, left: 5.0),
@@ -62,25 +71,28 @@ class TaskListState extends State<TaskList> {
                                         children: <Widget>[
                                           Text(
                                             snapshot.data[index].description ??
-                                                "~~",
-                                            style: TextStyle(fontSize: 25.0),
+                                                "Null",
+                                            style: TextStyle(fontSize: 26.0),
                                           ),
+                                          SizedBox(height: 3),
                                           Row(
                                             children: <Widget>[
                                               Text(
-                                                snapshot.data[index].dueDate ?? "q",
+                                                snapshot.data[index].dueDate ??
+                                                    "Null",
                                                 style: TextStyle(
                                                     color: Theme.of(context)
                                                         .accentColor,
-                                                    fontSize: 16),
+                                                    fontSize: 13),
                                               ),
                                               SizedBox(width: 12),
                                               Text(
-                                                snapshot.data[index].dueTime ?? "q",
+                                                snapshot.data[index].dueTime ??
+                                                    "Null",
                                                 style: TextStyle(
                                                     color: Theme.of(context)
                                                         .accentColor,
-                                                    fontSize: 16),
+                                                    fontSize: 13),
                                               ),
                                             ],
                                           ),

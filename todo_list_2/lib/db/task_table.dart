@@ -44,13 +44,6 @@ class TaskTable {
         maps[index]['time'],
         maps[index]['isDone'],
       );
-
-//      Task task = Task(
-//          _randomInt.nextInt(10000000),
-//          _inputDescription,
-//          DateFormat.yMMMd().format(_selectedDate).toString(),
-//          _selectedTime.format(context),
-//          1);
     });
   }
 }

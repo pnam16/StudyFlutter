@@ -27,7 +27,7 @@ class ModalScreenState extends State<ModalScreen> {
         _inputDescription,
         DateFormat.yMMMd().format(_selectedDate).toString(),
         _selectedTime.format(context),
-        1);
+        0);
     Provider.of<TaskBloc>(context, listen: false).event.add(AddTaskEvent(task));
     Navigator.of(context).pop();
 
@@ -51,15 +51,6 @@ class ModalScreenState extends State<ModalScreen> {
             decoration: InputDecoration(
               hintText: 'Describe your task',
             ),
-
-            ////////////////////////////
-            ////////////////////
-            validator: (value) {
-              if (value.isEmpty) {
-                return 'Please enter some text';
-              }
-              return null;
-            },
             onChanged: (value) {
               print(value);
               _inputDescription = value;

@@ -96,7 +96,6 @@
 //  }
 //}
 
-
 //===================================
 //2. Add image, Col, Row, Container, padding, add a long text...
 //void main() => runApp(MyApp());
