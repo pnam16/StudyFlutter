@@ -12,7 +12,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Todo List'),
+        title: Text('To Do List'),
         actions: <Widget>[],
       ),
       body: TaskList(),
@@ -20,9 +20,11 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
             context: context,
 //            builder: (_) => TaskScreen(isEditMode: false),
-            builder: (_) => ModalScreen(),
+            builder: (_) => ModalScreen(DateTime.now().toString(), false),
           );
         },
         tooltip: 'Add a new item!',

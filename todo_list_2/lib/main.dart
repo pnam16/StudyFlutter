@@ -11,13 +11,12 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Provider<TaskBloc>.value(
       value: TaskBloc(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Flutter App',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

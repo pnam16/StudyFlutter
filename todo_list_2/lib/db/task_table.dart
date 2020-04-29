@@ -7,11 +7,10 @@ class TaskTable {
 
   static const CREATE_TABLE_QUERY = '''
     CREATE TABLE $TABLE_NAME(
-      id INTEGER PRIMARY KEY,
+      id TEXT PRIMARY KEY,
       description TEXT,
       date TEXT,
-      time TEXT,
-      isDone INTEGER
+      time TEXT
       )''';
 
   static const DROP_TABLE_QUERY = '''
@@ -20,11 +19,8 @@ class TaskTable {
 
   Future<int> insertTask(Task task) {
     final Database db = TaskDatabase.instanse.database;
-    return db.insert(
-      TABLE_NAME,
-      task.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    return db.insert(TABLE_NAME, task.toMap(),
+        conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<void> deleteTask(Task task) async {
@@ -42,7 +38,6 @@ class TaskTable {
         maps[index]['description'],
         maps[index]['date'],
         maps[index]['time'],
-        maps[index]['isDone'],
       );
     });
   }

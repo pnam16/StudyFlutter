@@ -1,15 +1,17 @@
-import 'dart:math';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_2/bloc/task_bloc.dart';
 import 'package:todo_list_2/event/add_task_event.dart';
+import 'package:todo_list_2/event/delete_task_event.dart';
 import 'package:todo_list_2/model/task.dart';
 
 class ModalScreen extends StatefulWidget {
-  bool isEditMode = false;
+  String id;
+  bool isEditMode;
+
+  ModalScreen(this.id, this.isEditMode);
 
   @override
   State<StatefulWidget> createState() => ModalScreenState();
@@ -19,20 +21,6 @@ class ModalScreenState extends State<ModalScreen> {
   TimeOfDay _selectedTime;
   DateTime _selectedDate;
   String _inputDescription;
-
-  void _savePressed(BuildContext context) {
-    var _randomInt = Random();
-    Task task = Task(
-        _randomInt.nextInt(10000000),
-        _inputDescription,
-        DateFormat.yMMMd().format(_selectedDate).toString(),
-        _selectedTime.format(context),
-        0);
-    Provider.of<TaskBloc>(context, listen: false).event.add(AddTaskEvent(task));
-    Navigator.of(context).pop();
-
-    print(task.toMap()); /////////////
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +36,11 @@ class ModalScreenState extends State<ModalScreen> {
                   fontWeight: FontWeight.w700,
                   fontSize: 22)),
           TextFormField(
+            initialValue: _inputDescription == null ? null : _inputDescription,
             decoration: InputDecoration(
               hintText: 'Describe your task',
             ),
             onChanged: (value) {
-              print(value);
               _inputDescription = value;
             },
           ),
@@ -119,7 +107,8 @@ class ModalScreenState extends State<ModalScreen> {
   void _pickDueDate() {
     showDatePicker(
             context: context,
-            initialDate: widget.isEditMode ? _selectedDate : DateTime.now(),
+//            initialDate: widget.isEditMode ? _selectedDate : DateTime.now(),
+            initialDate: DateTime.now(),
             firstDate: DateTime(2020),
             lastDate: DateTime(2030))
         .then((date) {
@@ -136,7 +125,8 @@ class ModalScreenState extends State<ModalScreen> {
   void _pickDueTime() {
     showTimePicker(
       context: context,
-      initialTime: widget.isEditMode ? _selectedTime : TimeOfDay.now(),
+//      initialTime: widget.isEditMode ? _selectedTime : TimeOfDay.now(),
+      initialTime: TimeOfDay.now(),
     ).then((time) {
       if (time == null) {
         return;
@@ -145,5 +135,16 @@ class ModalScreenState extends State<ModalScreen> {
         _selectedTime = time;
       });
     });
+  }
+
+  void _savePressed(BuildContext context) {
+    if (_inputDescription == null) return;
+    Task task = Task(
+        widget.id,
+        _inputDescription,
+        DateFormat.yMMMd().format(_selectedDate).toString(),
+        _selectedTime.format(context));
+    Provider.of<TaskBloc>(context, listen: false).event.add(AddTaskEvent(task));
+    Navigator.of(context).pop();
   }
 }

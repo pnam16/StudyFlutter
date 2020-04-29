@@ -5,6 +5,7 @@ import 'package:todo_list_2/base/base_event.dart';
 import 'package:todo_list_2/db/task_table.dart';
 import 'package:todo_list_2/event/add_task_event.dart';
 import 'package:todo_list_2/event/delete_task_event.dart';
+import 'package:todo_list_2/event/edit_task_event.dart';
 import 'package:todo_list_2/model/task.dart';
 
 class TaskBloc extends BaseBloc {
@@ -37,12 +38,19 @@ class TaskBloc extends BaseBloc {
     _taskListStreamController.sink.add(_list);
   }
 
+  void _editTask(Task task) {
+    _deleteTask(task);
+    _addTask(task);
+  }
+
   @override
   void dispatchEvent(BaseEvent event) {
     if (event is AddTaskEvent) {
       _addTask(event.task);
     } else if (event is DeleteTaskEvent) {
       _deleteTask(event.task);
+    } else if (event is EditTaskEvent) {
+      _editTask(event.task);
     }
   }
 

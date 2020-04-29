@@ -4,7 +4,7 @@ import 'package:todo_list_2/db/task_table.dart';
 
 class TaskDatabase {
   static const DB_NAME = 'task.db';
-  static const DB_VERSION = 2;
+  static const DB_VERSION = 1; ////////////
   static Database _database;
 
   TaskDatabase._internal();
