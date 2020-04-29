@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list_2/bloc/task_bloc.dart';
 import 'package:todo_list_2/event/add_task_event.dart';
-import 'package:todo_list_2/event/delete_task_event.dart';
 import 'package:todo_list_2/model/task.dart';
 
 class ModalScreen extends StatefulWidget {
@@ -57,7 +56,9 @@ class ModalScreenState extends State<ModalScreen> {
             readOnly: true,
             decoration: InputDecoration(
               hintText: _selectedDate == null
+                  ? (!widget.isEditMode
                   ? 'Provide date'
+                  : 'Enter due date again')
                   : DateFormat.yMMMd().format(_selectedDate).toString(),
             ),
           ),
@@ -74,7 +75,9 @@ class ModalScreenState extends State<ModalScreen> {
             readOnly: true,
             decoration: InputDecoration(
               hintText: _selectedTime == null
+                  ? (!widget.isEditMode
                   ? 'Provide time'
+                  : 'Enter due time again')
                   : _selectedTime.format(context),
             ),
           ),
