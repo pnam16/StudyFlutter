@@ -5,8 +5,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 
 class WeatherRepo {
-  WeatherRepo();
-
   Future<WeatherModel> getWeather() async {
     Position position = await Geolocator() // get position
         .getLastKnownPosition(desiredAccuracy: LocationAccuracy.high);
@@ -14,10 +12,14 @@ class WeatherRepo {
         position.latitude.toString() +
         '&lon=' +
         position.longitude.toString() +
-        '&appid=439d4b804bc81807953eb36d2a80c26a0';
+        '&appid=75074f2a7474e1225e1572b6b935abb9';
+
+//    print(position.latitude.toString());
+//    print(position.longitude.toString());
 
     final result = await http.Client().get(url);
-    if (result.statusCode != 200) throw Exception();
+    if (result.statusCode != 200) throw Exception("Can not connect");
+
     return parsedJson(result.body);
   }
 
