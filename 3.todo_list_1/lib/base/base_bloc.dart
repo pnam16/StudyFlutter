@@ -1,17 +1,18 @@
 import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
-import 'package:todo_list_1/base/base_event.dart';
+import 'base_event.dart';
 
 abstract class BaseBloc {
-  StreamController<BaseEvent> _eventStreamController = StreamController();
+  final StreamController<BaseEvent> _eventStreamController = StreamController();
 
   Sink<BaseEvent> get event => _eventStreamController.sink;
 
+  // ignore: sort_constructors_first
   BaseBloc() {
     _eventStreamController.stream.listen((event) {
       if (event is! BaseEvent) {
-        throw Exception("Event sai");
+        throw Exception('Event not true');
       }
       dispatchEvent(event);
     });

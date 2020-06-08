@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list_1/bloc/todo_bloc.dart';
-import 'package:todo_list_1/event/delete_todo_event.dart';
-import 'package:todo_list_1/model/todo.dart';
+
+import '../bloc/todo_bloc.dart';
+import '../event/delete_todo_event.dart';
+import '../model/todo.dart';
 
 class TodoList extends StatefulWidget {
   @override
@@ -13,7 +14,7 @@ class TodoListState extends State<TodoList> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    var bloc = Provider.of<TodoBloc>(context);
+    final bloc = Provider.of<TodoBloc>(context);
     bloc.initData();
   }
 
@@ -32,8 +33,8 @@ class TodoListState extends State<TodoList> {
                           itemBuilder: (context, index) {
                             return ListTile(
                               title: Text(
-                                snapshot.data[index].content ?? "aa",
-                                style: TextStyle(fontSize: 22.0),
+                                snapshot.data[index].content ?? 'aa',
+                                style: const TextStyle(fontSize: 22),
                               ),
                               trailing: GestureDetector(
                                 onTap: () {
@@ -50,18 +51,18 @@ class TodoListState extends State<TodoList> {
                 case ConnectionState.none:
                 case ConnectionState.waiting:
                   return Container(
-                      padding: EdgeInsets.only(top: 200.0),
+                      padding: const EdgeInsets.only(top: 200),
                       child: Text('Empty',
                           style: TextStyle(
-                              fontSize: 25.0,
+                              fontSize: 25,
                               fontWeight: FontWeight.w400,
                               fontStyle: FontStyle.italic)));
                 default:
                   return Container(
-                      padding: EdgeInsets.only(top: 200.0),
-                      width: 69.0,
-                      height: 69.0,
-                      child: CircularProgressIndicator());
+                      padding: const EdgeInsets.only(top: 200),
+                      width: 69,
+                      height: 69,
+                      child: const CircularProgressIndicator());
               }
             }));
   }

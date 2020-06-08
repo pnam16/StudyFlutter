@@ -7,7 +7,7 @@ class TodoListContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 8.0, right: 5.0),
+      padding: const EdgeInsets.only(left: 8, right: 5),
       child: Column(
         children: <Widget>[TodoHeader(), TodoList()],
       ),

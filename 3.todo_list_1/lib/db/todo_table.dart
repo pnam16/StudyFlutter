@@ -1,6 +1,7 @@
 import 'package:sqflite/sqflite.dart';
-import 'package:todo_list_1/db/todo_database.dart';
-import 'package:todo_list_1/model/todo.dart';
+
+import '../model/todo.dart';
+import 'todo_database.dart';
 
 class TodoTable {
   static const TABLE_NAME = 'todo';
@@ -16,7 +17,7 @@ class TodoTable {
   ''';
 
   Future<int> insertTodo(Todo todo) {
-    final Database db = TodoDatabase.instanse.database;
+    final db = TodoDatabase.instanse.database;
     return db.insert(
       TABLE_NAME,
       todo.toMap(),
@@ -25,13 +26,13 @@ class TodoTable {
   }
 
   Future<void> deleteTodo(Todo todo) async {
-    final Database db = TodoDatabase.instanse.database;
+    final db = TodoDatabase.instanse.database;
     await db.delete(TABLE_NAME, where: 'id = ?', whereArgs: [todo.id]);
   }
 
   Future<List<Todo>> selectAllTodo() async {
-    final Database db = TodoDatabase.instanse.database;
-    final List<Map<String, dynamic>> maps = await db.query('todo');
+    final db = TodoDatabase.instanse.database;
+    final List<Map> maps = await db.query('todo');
 
     return List.generate(maps.length, (index) {
       return Todo(maps[index]['id'], maps[index]['context']);

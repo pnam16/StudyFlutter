@@ -1,49 +1,53 @@
 import 'dart:async';
 import 'dart:math';
 
-import 'package:todo_list_1/base/base_bloc.dart';
-import 'package:todo_list_1/base/base_event.dart';
-import 'package:todo_list_1/db/todo_table.dart';
-import 'package:todo_list_1/event/add_todo_event.dart';
-import 'package:todo_list_1/event/delete_todo_event.dart';
-import 'package:todo_list_1/model/todo.dart';
+import '../base/base_bloc.dart';
+import '../base/base_event.dart';
+import '../db/todo_table.dart';
+import '../event/add_todo_event.dart';
+import '../event/delete_todo_event.dart';
+import '../model/todo.dart';
 
 class TodoBloc extends BaseBloc {
-  StreamController<List<Todo>> _todoListStreamController = StreamController();
+  final StreamController<List<Todo>> _listStreamController = StreamController();
 
-  Stream<List<Todo>> get todoListStream => _todoListStreamController.stream;
+  Stream<List<Todo>> get todoListStream => _listStreamController.stream;
 
-  TodoTable _todoTable = TodoTable();
+  final TodoTable _todoTable = TodoTable();
 
-  var _randomInt = Random();
+  final _randomInt = Random();
 
-  List<Todo> _list = List();
+  List<Todo> _list = [];
 
-  initData() async {
+  Future<void> initData() async {
     _list = await _todoTable.selectAllTodo();
+    // ignore: always_put_control_body_on_new_line
     if (_list == null) return;
-    _todoListStreamController.sink.add(_list);
+    _listStreamController.sink.add(_list);
   }
 
+  // ignore: always_declare_return_types
   _addTodo(Todo todo) async {
     //insert to db
     await _todoTable.insertTodo(todo);
 
     _list.add(todo);
-    _todoListStreamController.sink.add(_list);
+    _listStreamController.sink.add(_list);
   }
 
+  // ignore: always_declare_return_types
   _deleteTodo(Todo todo) async {
     await _todoTable.deleteTodo(todo);
 
     _list.remove(todo);
-    _todoListStreamController.sink.add(_list);
+    _listStreamController.sink.add(_list);
   }
 
   @override
   void dispatchEvent(BaseEvent event) {
     if (event is AddTodoEvent) {
-      Todo todo = Todo(_randomInt.nextInt(100000), event.content);
+      // ignore: omit_local_variable_types
+      final Todo todo = Todo(_randomInt.nextInt(100000), event.content);
       _addTodo(todo);
     } else if (event is DeleteTodoEvent) {
       _deleteTodo(event.todo);
@@ -53,6 +57,6 @@ class TodoBloc extends BaseBloc {
   @override
   void dispose() {
     super.dispose();
-    _todoListStreamController.close();
+    _listStreamController.close();
   }
 }

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_list_1/bloc/todo_bloc.dart';
-import 'package:todo_list_1/db/todo_database.dart';
 
+import 'bloc/todo_bloc.dart';
+import 'db/todo_database.dart';
 import 'todo/todo_list_container.dart';
 
-//  await TodoDatabase.instanse.init();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await TodoDatabase.instanse.init();
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Todo List'),
+          title: const Text('Todo List'),
         ),
         body: Provider<TodoBloc>.value(
           value: TodoBloc(),
