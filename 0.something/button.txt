@@ -1,0 +1,13 @@
+         Container(
+            height: 50,
+            child: RaisedButton(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              splashColor: Colors.white,
+              color: Color(0xFF21242E),
+              onPressed: () {},
+              child: const Text("Button",
+                  style: TextStyle(color: Colors.blue, fontSize: 20)),
+            ),
+          )

@@ -1,0 +1,13 @@
+Container(
+  decoration: BoxDecoration(
+      color: Color(0xFFBAAC9F),
+      border: Border.all(width: 1),
+      borderRadius: BorderRadius.circular(8)),
+  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+  child: Column(
+    children: <Widget>[
+      Text("HIGH SCORE",
+          style:TextStyle(fontSize: 13)),
+    ],
+  ),
+),
